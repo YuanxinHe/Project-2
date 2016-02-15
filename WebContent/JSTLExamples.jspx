@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsp/jstl/fmt" version="2.0">
+	<jsp:directive.page contentType="text/html; charset=UTF-8"
+		pageEncoding="UTF-8" session="false" />
+	<jsp:output doctype-root-element="html"
+		doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
+		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+		omit-xml-declaration="true" />
+	<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Insert title here</title>
+</head>
+<body>
+
+	<c:set var="number" value="54" />
+	<c:set var="errorMsg" value="I encountered an error" />
+	<c:set var="greetings" value="bonjour" />
+
+
+	Your var number = ${number}
+	<br />
+
+	<c:set var="customSize" value="${param.num}" />
+
+	<p>
+		<span style="color:blue; font-size:${customSize}px"> Here is
+			your css-set font in blue color </span>
+	</p>
+	<c:forEach var="i" begin="1" end="20" step="3"> 
+     I am looping... the loop counter i = ${i}  
+  </c:forEach>
+
+	Here is the “header" map:
+	<ul>
+		<c:forEach var="element" items="${header}">
+			<li>${element.key}-- ${element.value}</li>
+		</c:forEach>
+	</ul>
+
+	Here is how you use if and check for not empty(null) objects
+	<c:if test="${not empty errorMsg}">
+		<p style="color: red">The error message is: ${errorMsg}</p>
+	</c:if>
+
+	Here is how you use strings within strings:
+	<c:if test="${greetings eq 'bonjour'}">
+		<p>The greeting ${greetings} is in French</p>
+	</c:if>
+
+	<c:choose>
+		<c:when test="${number gt 10}">
+			<p>The number is big!</p>
+		</c:when>
+		<c:when test="${number eq 10}">
+			<p>The number is medium size!</p>
+		</c:when>
+		<c:otherwise>
+			<p>The number is small!</p>
+		</c:otherwise>
+	</c:choose>
+	
+		<form action="" method="GET">
+		<table>
+			<tr>
+				<td>input type text</td>
+				<td><INPUT type="text" name="name_type" id="id_type"/></td>
+			</tr>
+			<tr>
+				<td>input type radio</td>
+				<td><INPUT type="radio" name="name_radio" id="id_radio"/></td>
+			</tr>
+			<tr>
+				<td>input type checkbox</td>
+				<td><INPUT type="checkbox" name="name_checkbox" id="id_checkbox"/></td>
+			</tr>
+			<tr>
+				<td>input type number</td>
+				<td><INPUT type="number" name="name_number" id="id_number"/></td>
+			</tr>
+			<tr>
+				<td>input type submit</td>
+				<td><INPUT type="submit" name="name_submit" id="id_submit"/></td>
+			</tr>
+		</table>
+	</form>
+	
+</body>
+	</html>
+</jsp:root>
